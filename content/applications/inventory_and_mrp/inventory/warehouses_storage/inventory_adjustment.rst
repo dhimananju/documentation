@@ -1,8 +1,8 @@
+:show-content:
+
 =====================
 Inventory adjustments
 =====================
-
-.. _inventory/warehouses_storage/inventory_management/count_products:
 
 In any warehouse management system, the recorded inventory counts in the database might not always
 match the actual inventory counts in the warehouse. The discrepancy between the two counts can be
@@ -16,7 +16,7 @@ Inventory Adjustments page
 To view the *Inventory Adjustments* page, navigate to :menuselection:`Inventory app --> Operations
 --> Inventory Adjustments`.
 
-.. image:: count_products/count-products-inventory-adjustments-page.png
+.. image:: inventory_adjustment/count_products/inventory-adjustments-page.png
    :align: center
    :alt: In stock products listed on the Inventory adjustments page.
 
@@ -99,7 +99,7 @@ the :guilabel:`Difference` column is **green**. If the :guilabel:`Counted Quanti
 quantities match, and haven't been changed at all, no value appears in the :guilabel:`Difference`
 column.
 
-.. image:: count_products/count-products-difference-column.png
+.. image:: inventory_adjustment/count_products/difference-column.png
    :align: center
    :alt: Difference column on inventory adjustments page.
 
@@ -119,7 +119,7 @@ adjustment is being made on, but can be changed to reflect whatever reference or
 
 Once ready, click :guilabel:`Apply` to apply the inventory adjustment.
 
-.. image:: count_products/count-products-apply-inventory-adjustment.png
+.. image:: inventory_adjustment/count_products/apply-inventory-adjustment.png
    :align: center
    :alt: Apply all option applies the inventory adjustment once a reason is specified.
 
@@ -139,7 +139,7 @@ Doing so copies the value from the :guilabel:`On Hand Quantity` column over to t
 `0.00`. Subsequently, once applied, an inventory move with `0.00` :guilabel:`Quantity Done` is
 recorded in the product's inventory adjustment history.
 
-.. image:: count_products/count-products-zero-move.png
+.. image:: inventory_adjustment/count_products/zero-move.png
    :align: center
    :alt: Zero count inventory adjustment move.
 
@@ -164,7 +164,7 @@ column.
 Subsequently, once applied, a move with the difference between the :guilabel:`On Hand Quantity` and
 the :guilabel:`Counted Quantity` is recorded in the product's inventory adjustment history.
 
-.. image:: count_products/count-products-history-inventory-adjustments.png
+.. image:: inventory_adjustment/count_products/history-inventory-adjustments.png
    :align: center
    :alt: Inventory Adjustments History dashboard detailing a list of prior product moves.
 
@@ -186,7 +186,7 @@ To modify the default scheduled date, go to :menuselection:`Inventory app --> Co
 Settings`. Then, in the :guilabel:`Operations` section, locate the :guilabel:`Annual Inventory Day
 and Month` setting, which includes a drop-down menu that is set to `31 December` by default.
 
-.. image:: count_products/count-products-annual-inventory.png
+.. image:: inventory_adjustment/count_products/annual-inventory.png
    :align: center
    :alt: Adjust the next inventory count date with the Annual Inventory Day and Month setting.
 
@@ -212,7 +212,7 @@ product line.
    the table, in the header row next to the :guilabel:`Location` label. This selects **all** product
    lines.
 
-.. image:: count_products/count-products-count-popup.png
+.. image:: inventory_adjustment/count_products/count-popup.png
    :align: center
    :alt: Request a count popup on inventory adjustments page.
 
@@ -224,7 +224,7 @@ pop-up, fill in the following information:
 - :guilabel:`User`: the user responsible for the count.
 - :guilabel:`Accounting Date`: the date at which the inventory adjustment will be accounted.
 - :guilabel:`Count`: to leave the on-hand quantity of each product line blank, select
-  :guilabel:`Leave Empty`. To prefill the on-hand quantity of each product line with the current
+  :guilabel:`Leave Empty`. To pre-fill the on-hand quantity of each product line with the current
   value recorded in the database, select :guilabel:`Set Current Value`.
 
 Finally, once ready, click :guilabel:`Confirm` to request the count.
@@ -234,4 +234,11 @@ Finally, once ready, click :guilabel:`Confirm` to request the count.
    and are scheduled for **today** or **earlier**.
 
 .. seealso::
-   :doc:`/applications/inventory_and_mrp/inventory/warehouses_storage/advanced_operations_warehouse/cycle_counts`
+   :doc:`inventory_adjustment/cycle_counts`
+
+
+.. toctree::
+   :titlesonly:
+
+   inventory_adjustment/cycle_counts
+   inventory_adjustment/scrap_inventory
