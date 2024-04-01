@@ -1,4 +1,6 @@
+import re
 from docutils import nodes
+from docutils.parsers.rst import roles
 from sphinx import addnodes
 from sphinx.environment.adapters import toctree
 
@@ -15,6 +17,7 @@ def setup(app):
     app.add_js_file('js/menu.js')
     app.add_js_file('js/page_toc.js')
     app.add_js_file('js/switchers.js')
+    roles.register_local_role('icon', icon_role)
 
     return {
         'parallel_read_safe': True,
@@ -107,3 +110,56 @@ def resolve(old_resolve, tree, docname, *args, **kwargs):
     if resolved_toc:  # `resolve` returns None if the depth of the TOC to resolve is too high
         _update_toctree_nodes(resolved_toc)
     return resolved_toc
+
+
+def extract_icon_classes(filename):
+    """
+    Return a list of icon classes from a CSS file.
+    """
+    icon_classes = []
+    try:
+        with open(filename, 'r') as f:
+            for line in f:
+                match = re.search(r'\.([a-zA-Z0-9_-]+):before', line)
+                if match:
+                    icon_class = match.group(1)
+                    icon_classes.append(icon_class)
+    except FileNotFoundError:
+        print(f"Error: File '{filename}' not found.")
+    except Exception as e:
+        print(f"Error: {e}")
+    return icon_classes
+
+def handle_error(inliner, rawtext, error_message, lineno):
+    """
+    Handle an error by creating a system message node.
+    """
+    error_node = nodes.system_message(
+        lineno, backrefs=[], source=rawtext, type='error', level=1)
+    error_node['message'] = inliner.reporter.error(error_message, line=lineno)
+    return [error_node], []
+
+def icon_role(role, rawtext, text, lineno, inliner, options={}, content=[]):
+    """
+    Custom role for adding icons to the documentation.
+    """
+    # Paths to icon sets used by the :icon: role
+    odoo_ui_icon_path = 'extensions/odoo_theme/static/scss/_odoo_ui_icon.scss'
+    font_awesome_icon_path = 'extensions/odoo_theme/static/scss/_font_awesome.scss'
+    # Check which icon set the icon belongs to
+    if 'oi-' in text:
+        icon_file = odoo_ui_icon_path
+    elif 'fa-' in text:
+        icon_file = font_awesome_icon_path
+    else:
+        return handle_error(
+            inliner, rawtext, f"'{text}' is not an 'oi-' or 'fa-' icon set", lineno)
+    # Extract icon classes from the icon set
+    icon_classes = extract_icon_classes(icon_file)
+    # Check if the icon class is in the icon set and create the element
+    if text in icon_classes:
+        inline_node = nodes.inline(classes=[text])
+        return [inline_node], []
+    else:
+        return handle_error(
+            inliner, rawtext, f"Icon class '{text}' not found in {icon_file}", lineno)
