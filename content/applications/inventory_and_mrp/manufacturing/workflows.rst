@@ -8,6 +8,7 @@ Workflows
    :titlesonly:
 
    workflows/subcontracting
+   workflows/subcontracting_resupply
    workflows/use_mps
    workflows/work_center_time_off
    workflows/scrap_manufacturing
