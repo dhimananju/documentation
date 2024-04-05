@@ -343,6 +343,66 @@ Save`.
              :align: center
              :alt: Receipt format using naming convention: EpsonTMU220B__IMC_LDV_LDH_SCALE35__.
 
+DYMO LabelWriter print delay
+----------------------------
+
+The DYMO LabelWriter (450 DUO) has a known issue in printing with the :abbr:`IoT (Internet of
+Things)` box while using the label function. To resolve this issue, the printer must be reinstalled.
+First, open the OpenPrinting CUPS administration page from the :abbr:`IoT (Internet of Things)` box
+homepage and click :guilabel:`Add a Printer`.
+
+.. important::
+   The DYMO LabelWriter 450 DUO printer is the recommended DYMO printer for use with Odoo and the
+   :abbr:`IoT (Internet of Things)` box. It **must** already be connected to, and recognized on, the
+   :abbr:`IoT (Internet of Things)` box.
+
+.. image:: troubleshooting/add-printer-dymo.png
+   :align: center
+   :alt: Add a printer button highlighted on the Printer CUPS management page.
+
+On the next screen, in the :guilabel:`Local Printers` section, select the :guilabel:`DYMO
+LabelWriter 450 DUO Label (DYMO LabelWriter 450 DUO Label)` pre-installed printer. Click
+:guilabel:`Continue`.
+
+.. image:: troubleshooting/local-printer.png
+   :align: center
+   :alt: Add a printer screen on OpenPrinting CUPS with DYMO LabelWriter 450 DUO Label highlighted.
+
+On the following screen, modify the :guilabel:`Name` to something recognizable, as the original
+printer will still be present. Click :guilabel:`Continue` to be taken to the next screen.
+
+.. image:: troubleshooting/rename-printer.png
+   :align: center
+   :alt: Rename printer page in the 'Add a Printer' flow, with the name field highlighted.
+
+Next, choose the :guilabel:`Model`. Select :guilabel:`DYMO LabelWriter 450 DUO Label (en)`, and
+finally, click :guilabel:`Add Printer` to complete the installation.
+
+.. image:: troubleshooting/choose-printer.png
+   :align: center
+   :alt: Choose model screen on the OpenPrinting CUPS console with model and add a printer
+         highlighted.
+
+After being redirected to a confirmation page, acknowledging a successful installation, click on the
+:guilabel:`Printers` button in the top menu.
+
+All the printers installed on the OpenPrinting CUPS server will appear, including the newly
+installed: *DYMO LabelWriter 450 DUO Label*. Click into the `DYMO LabelWriter 450 DUO Label` printer
+that was just installed.
+
+.. image:: troubleshooting/printer-page.png
+   :align: center
+   :alt: Printer page with newly installed printer highlighted.
+
+To print a test label, click on the :guilabel:`Maintenance` drop-down menu to the left of the
+:guilabel:`Administration` drop-down, and select :guilabel:`Print Test Page`. The test label should
+print out immediately (one or two seconds).
+
+.. image:: troubleshooting/print-test.png
+   :align: center
+   :alt: Printing a test page from the administration drop-down menu in the OpenPrinting CUPs
+         server.
+
 The Zebra printer does not print anything
 -----------------------------------------
 
